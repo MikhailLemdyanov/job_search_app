@@ -1,7 +1,8 @@
 import unittest
 from unittest.mock import Mock, patch
 
-from src.iteraction_with_api import MyCustomError, hh_ru  # замените на актуальный путь
+from src.iteraction_with_api import (  # замените на актуальный путь
+    MyCustomError, hh_ru)
 
 
 class Test_hh_Ru(unittest.TestCase):
