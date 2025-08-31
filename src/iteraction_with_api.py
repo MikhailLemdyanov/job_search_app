@@ -8,9 +8,12 @@ from src.additional_functions import MyCustomError
 class HeadHunterAPI(ABC):
     """
     Абстрактный класс для работы с API.
-    Класс содержит методы, которые будут реализованы в классах наследниках:
-    - абстрактный метод _connect_apy, выполняющий подключение к API;
-    - абстрактный метод get_vacancies, который получает вакансии.
+
+    Класс содержит методы, которые будут реализованы в классах наследниках.
+
+    А именно:
+    Абстрактный метод _connect_apy, выполняющий подкючение к api.
+    Абстрактный метод get_vacancies, получает вакансии.
     """
 
     def __init__(self):
@@ -28,25 +31,27 @@ class HeadHunterAPI(ABC):
 
 class hh_ru(HeadHunterAPI):
     """
-    Класс для работы с hh.ru.
+    Класс для работы с hh.ru
+
     Класс для подключения к api и получения вакансий.
-    Метод _connect_apy, выполняющий подключение к API;
-    Метод get_vacancies, который получает вакансии.
+
+    Метод _connect_apy, выполняющий подкючение к api.
+    Метод get_vacancies, получает вакансии.
     """
 
     def __init__(self):
         self.__url = "https://api.hh.ru/vacancies"
-        self.__headers == {"User-Agent": "HH-User-Agent"}
-        self.__params == {"text": "", "page": 0, "per_page": 100, "area": 113}
+        self.__headers = {"User-Agent": "HH-User-Agent"}
+        self.__params = {"text": "", "page": 0, "per_page": 100, "area": 113}
         self.__vacancies = []
         super().__init__()
 
     def _connect_apy(self, keyword: str) -> list[dict]:
-        """Метод подключения к API"""
+        """Метод подключения к api"""
         self.__params["text"] = keyword
         while self.__params.get("page") != 20:
             response = requests.get(
-                self.url, headers=self.__headers, params=self.__params
+                self.__url, headers=self.__headers, params=self.__params
             )
             # Проверка статуса ответа
             if response.status_code != 200:
