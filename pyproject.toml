@@ -2,13 +2,16 @@
 name = "job-search-app"
 version = "0.1.0"
 description = ""
-authors = ["Your Name <you@example.com>"]
+authors = ["Mikhail Lemdyanov <lacoustique@ya.ru>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.13"
 requests = "^2.32.5"
 
+
+[tool.poetry.group.lint.dependencies]
+flake8 = "^7.3.0"
 
 [build-system]
 requires = ["poetry-core"]
